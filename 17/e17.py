@@ -1,13 +1,6 @@
-import requests
-from bs4 import BeautifulSoup
+import soup as s
 
 url = "https://www.nytimes.com/"
-
-def print_all_tags(tag_name):
-    for tag in soup.find_all(tag_name):
-        tag_s = tag.string
-        if tag_s: print(tag_s)
-
 
 if __name__=="__main__":
     print("Note:\n"
@@ -15,10 +8,8 @@ if __name__=="__main__":
             "and there is no sense to check whether this is 100% accurate.\n"
         "\tThe structure and tags will be different in a couple of years anyway.\n\n")
 
-    r = requests.get(url)
-    r_html = r.text
-    soup = BeautifulSoup(r_html, "lxml")
+    soup = s.get_soup(url)
 
-    print_all_tags('span')
-    print_all_tags('h2')
+    print(* s.get_all_tags(soup,'span'), sep="\n")
+    print(* s.get_all_tags(soup,'h2'),   sep="\n")
 
